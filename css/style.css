@@ -1,0 +1,222 @@
+@charset "utf-8";
+/**		CSS Document
+   * ------------------------------------------------------------------------
+   * Por Rodrigo Ross - 2018
+   * awati - Tecnologia Planejada
+   * ------------------------------------------------------------------------
+   */
+body{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	width: 100%;
+}
+
+body { padding-top: 40px; }
+@media screen and (max-width: 768px) {
+    body { padding-top: 0px; }
+}
+/**
+   * ------------------------------------------------------------------------
+   * Cabeçalho
+   * ------------------------------------------------------------------------
+   */
+.main-header{
+    margin-bottom: 20px;
+    margin-top: 30px;
+} 
+.nav-item .menu-button,
+.ativo{
+    /* Para poder forçar o menu na parte de baixo alinhando com a logo*/
+	/*display: inline;    */
+	text-decoration: none;
+	padding: 20px 10px 5px;
+    color: #bbbbbb;
+    margin-right: 0;
+	font-size: 18px;
+    border-bottom: 3px solid transparent;
+}
+
+.bd{
+    border: medium solid #5C2D91;
+}
+.ativo, .menu-button:hover{
+    text-decoration: none;
+    color:#5C2D91;
+    border-bottom: 3px solid #FAA61A ;
+}
+
+.redirect {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background-color:#ffffff;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Verdana;
+	font-size:12px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.redirect:hover {
+    /*background-color:#f6f6f6;*/
+    color: #5C2D91;
+    text-decoration: none;
+}
+.redirect:active {
+	position:relative;
+	top:1px;
+}
+
+/**
+   * ------------------------------------------------------------------------
+   * Corpo
+   * ------------------------------------------------------------------------
+   */
+   .btn-outline-awati {
+    color: #FAA61A;
+    background-color: transparent;
+    background-image: none;
+    border-color: #FAA61A;
+  }
+  
+  .btn-outline-awati:hover {
+    color: #fff;
+    background-color: #FAA61A;
+    border-color: #FAA61A;
+  }
+  
+  .btn-outline-awati:focus, .btn-outline-awati.focus {
+    box-shadow: 0 0 0 0.2rem rgba(156, 40, 167, 0.5);
+  }
+  
+  .btn-outline-awati.disabled, .btn-outline-awati:disabled {
+    color: #FAA61A;
+    background-color: transparent;
+  }
+  
+  .btn-outline-awati:not(:disabled):not(.disabled):active, .btn-outline-awati:not(:disabled):not(.disabled).active,
+  .show > .btn-outline-awati.dropdown-toggle {
+    color: #fff;
+    background-color: #FAA61A;
+    border-color: #FAA61A;
+  }
+  
+  .btn-outline-awati:not(:disabled):not(.disabled):active:focus, .btn-outline-awati:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-outline-awati.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(156, 40, 167, 0.5);
+  }
+
+
+.btn-social:hover{
+    background-color:#FAA61A;
+}
+#produto,
+#equipe,
+#produto{
+	clear: both;
+	margin-top: 20px;
+	padding-top: 5px;
+}
+
+/*Banner*/
+#banner{
+    clear: all;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+/*Serviços*/
+.tipo{
+    list-style-type: none;
+    width: 33%;
+    height: 100%;
+    position: relative;
+}
+
+.tipo .img-servico{
+    margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.tipo h3{
+    color:#686868 ;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.tipo p{
+	display: block;
+    margin: 5px auto;
+    padding: 10px;
+    width: 300px;
+    text-align: justify;
+    color: #b3b3b3;
+}
+
+/*Produtos*/
+#info-produto h1{
+	color:#474747;
+    text-transform: uppercase;
+}
+
+#info-produto p{
+	color: #626262;
+}
+/*Contato*/
+#contato{
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.formulario{
+	width: 80%;
+	margin: 5% 10%;
+	height: 350px;
+}
+
+/**
+   * ------------------------------------------------------------------------
+   * Rodape
+   * ------------------------------------------------------------------------
+   */
+
+.borda{
+    border-right: thin solid #1E0A33;
+}
+
+.info{
+    width: 100%;
+    min-width: 275px;
+}
+
+.main-footer{
+    clear: both;
+    color:#AD7009;
+	opacity: 0.9;    
+	background-color: #3C1D5E;
+	width: 100%;
+	height: auto;
+}
+
+.info{
+	font-size: 24px;
+	font-weight: 300;
+}
+.social{
+	color: azure;
+}
+.cpright{
+	color: #bbbbbb/*#1E0A33*/;
+	font-size: 16px;
+	font-family: Segoe, Segoe UI, DejaVu Sans, Trebuchet MS, Verdana," sans-serif";
+	font-weight: bolder;
+	left: 0;
+	bottom: 0;
+}

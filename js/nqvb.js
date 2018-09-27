@@ -3,20 +3,20 @@
     * Feito por Rodrigo Ross 
     * Awati Tecnologia planejada */
 
+//-----Functions
 
 //Delete IMG when resized
 function delChild(parent, mySize)
 {
     // Try to get div node with IMG if it already exists remove it to be replaced with right resolution
     var wrongChild = document.getElementById("cel-img");
-    console.log(wrongChild);
+    //console.log(wrongChild);
     if (wrongChild !== null)
     {
         //console.log(mySize);
         parent.removeChild(wrongChild);
     }
 };
-
 
 //change classes when resizing
 function undesired()
@@ -120,7 +120,11 @@ function doTheThing(newSrc)
     }
 }
 
-function stylize() {
+//Sleep simulator
+
+//Change classes of Form
+function stylize()
+{
     document.getElementById("formulario").classList.remove("mt-5");
     document.getElementById("formulario").classList.remove("float-right");
     document.getElementById("formulario").classList.add("m-3");
@@ -134,6 +138,7 @@ function firstShot(){
     {
         match: function()
         {
+            //toggle(document.getElementById("cel-img"), "on");
             //kinda of do nothing here
         },
 
@@ -166,6 +171,7 @@ function firstShot(){
     {
         match: function()
         {
+           
             doTheThing("https://via.placeholder.com/720x900");
         },
 
@@ -193,13 +199,16 @@ function firstShot(){
     enquire.register("(min-width: 992px) and (max-width: 1199px)",
     {
         match: function()
-        {
-            var floatForm = document.getElementById("formulario");
+        {   
+            toggle(document.getElementById("cel-img"), "off");
             
-            //Edit classes of form 
-            floatForm.classList.remove("m-3");
-            floatForm.classList.add("float-right");
-            floatForm.classList.add("mt-5");
+            if(exist())
+            {
+                delChild(document.getElementById("caixa"),1040);
+            }
+            
+            //Call big template
+            bigFixer();
         },
 
         unmatch: function()
@@ -213,13 +222,11 @@ function firstShot(){
     {
         match: function()
         {
-            //removeIt();
-            var floatForm = document.getElementById("formulario");
             
-            //Edit classes of form 
-            floatForm.classList.remove("m-3");
-            floatForm.classList.add("float-right");
-            floatForm.classList.add("mt-5");
+            toggle(document.getElementById("cel-img"), "off");
+            //removeIt();
+            bigFixer();
+
         },
 
         unmatch: function()
@@ -230,16 +237,83 @@ function firstShot(){
     });
 }
 
+// do the thing but for bigger resolutions
+function bigFixer() {
+    var floatForm = document.getElementById("formulario");
+    
+    //Edit classes of form 
+    try
+    {
+        if (floatForm == null) throw "Null form";        
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+    finally
+    {
+        if(floatForm !== null)
+        {
+            floatForm.classList.remove("m-3");
+            floatForm.classList.add("float-right");
+            floatForm.classList.add("mt-5");
+        }
+    }
+}
+
+//SecondShot is fired when window is resized, it'll run a lot be prepared
+function secondShot(){
+    console.log("mexi");
+    //Execute firstshot again 
+    //firstShot();
+}
+//Validator of Form
+function validate()
+{
+    //Helps validate checking if is empty
+    function isEmpty(field)
+    {
+        if (field == "" || field=== null)
+        {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    //var name = document.forms["formContato"]["nome"].value;
+    //var eMail = document.forms["formContato"]["mail"].value;
+    var tel = document.forms["formContato"]["tel"].value;
+    //var name = document.forms["formContato"]["mensagem"].value;
+
+    //check if tel is a phone number with minlength at 8 digits the html alçready handled with it reachs the max of 12 digits
+    if(isNaN(tel))
+    {
+        alert("Informe um número válido");
+        return false;
+    } else if (tel.length < 8)
+    {  
+        alert("Telefone Invalido");
+        return false;
+    }
+
+}
+
+//------Code
 //Do a preemptive run of enquire to load correctly, I know  that there is a better way somewhere
 window.onload = function()
 {
-    toggle(document.getElementById("cel-img"), "off");
+    
     firstShot();
     
 }
 
+//Run enquire when resized
+window.addEventListener("resize", secondShot());
+
 //Enquire run
-enquire.register("(max-width: 361px)",
+/*
+enquire.register("( all and (max-width: 361px)",
 {
     //Code to be executed if screen width is under 361px
     match: function()
@@ -259,7 +333,7 @@ enquire.register("(max-width: 361px)",
     unmatch()
     {
         //Try if width is above 361 and under 576
-        enquire.register("(max-width: 576px)",
+        enquire.register("( all and (max-width: 576px)",
         {
             //Triggered when media query matches.
             match : function ()
@@ -272,7 +346,7 @@ enquire.register("(max-width: 361px)",
             {
 
                 //try for width above 576 and under 770px
-                enquire.register("(max-width: 780px)",
+                enquire.register("( all and (max-width: 780px)",
                 {
                     //Triggered when media query matches.
                     match : function ()
@@ -284,7 +358,7 @@ enquire.register("(max-width: 361px)",
                     unmatch: function()
                     {
                         //Try if width s above 780 and under 991
-                        enquire.register("(max-width: 991px)",
+                        enquire.register("( all and (max-width: 991px)",
                         {
                             //Triggered when media query matches.
                             match : function ()
@@ -295,14 +369,20 @@ enquire.register("(max-width: 361px)",
                             //If width is above 991 
                             unmatch: function()
                             {                
+                                delChild(document.getElementById("caixa"),"1040");
+                                //console.log("sai");
                                 //You get it now
-                                enquire.register("(min-width: 992px) and (max-width: 1199px)",
+                                enquire.register("( all and (min-width: 992px) and (max-width: 1199px)",
                                 {
                                     //Triggered when media query matches.
                                     match : function ()
                                     {
                                         
-
+                                        //delChild(document.getElementById("caixa"),1040);
+                                        if(!exist())
+                                        {
+                                            console.log("errado");
+                                        }
                                         var floatForm = document.getElementById("formulario");
                                         
                                         //Edit classes of form 
@@ -315,15 +395,13 @@ enquire.register("(max-width: 361px)",
                                     //if width is above 780px
                                     unmatch: function()
                                     {
-                                        enquire.register("(min-width: 1200px)",
+                                        enquire.register("( all and (min-width: 1200px)",
                                         {
                                             //Triggered when media query matches.
                                             match : function ()
                                             {
                                                 var floatForm = document.getElementById("formulario");
                                                   
-                                                delChild(document.getElementById("caixa"),"1040");
-
                                                 //Edit classes of form 
                                                 floatForm.classList.remove("m-3");
                                                 floatForm.classList.add("float-right");
@@ -359,3 +437,5 @@ enquire.register("(max-width: 361px)",
         //undesired();
     }
 });
+*/
+

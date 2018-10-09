@@ -4,6 +4,7 @@
 //{
 //    var btn = $(event)
 //})
+/*
 if(isset($_POST['submit']))
 {
     $to = "rodrigo@awati.com.br"; // this is your Email address
@@ -17,9 +18,10 @@ if(isset($_POST['submit']))
     $headers2 = "From:" . $to;
     mail($to,$subject,$message,$headers);
     
-    echo "Enviado com sucesso " . $first_name . ", entraremos em contato o mais breve possivel.";
+    //echo "Enviado com sucesso " . $first_name . ", entraremos em contato o mais breve possivel.";
     // You can also use header('Location: thank_you.php'); to redirect to another page.
 }
+*/
 ?>
 
 <!DOCTYPE html>
@@ -54,8 +56,8 @@ if(isset($_POST['submit']))
     <div id="caixa" class="container-fluid">
         <div id="cel-img" class="image">
             <img id="promo" class="img-fluid" src="https://via.placeholder.com/340x1200" alt="Imagem Promocional">
-        </div><!-- action="<?php// echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> -->
-        <form id="formulario" class="m-3 p-4 bg-light rounded" name="formContato"  method="POST" onsubmit="return (validate());">
+        </div>
+        <form id="formulario" class="m-3 p-4 bg-light rounded" name="formContato" method="POST" onsubmit="return (validate());">
             <div class="form-group row">
                 <label class="col col-form-label text-center" for="name">Nome Completo</label>
                 <input type="text" id="nome" class="form-control form-control" placeholder="Seu nome" name="nome" id="nome" data-toggle="tooltip" data-placement="bottom" title="Por favor, insira o seu nome!" data-trigger="manual" required minlength="3">
@@ -75,11 +77,30 @@ if(isset($_POST['submit']))
             <div><small id="infoHelp" class="form-text text-muted text-right">Suas informações serão mantidas em sigilo e não serão distribuidas!</small></div>
             <div class="form-group row">
                 <div class="col col-form-label text-center mt-4">
-                    <button type="submit" class="btn btn-outline-awati btn-lg btn-block" data-toggle="modal" data-target="#sendMail">Enviar</button>
+                    <button type="submit" class="btn btn-outline-awati btn-lg btn-block" data-toggle="modal" data-target="#confirmacao" >Enviar</button>
                     <span class="sr-only">Enviar</span>
                 </div>
             </div>
         </form>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmacao"  role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal Conteudo-->
+            <div class="modal-content" tabindex='-1' >
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>Aguarde nosso contato</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Informações para contato recebidas com sucesso. Aguarde que nossa equipe entrará em contato o mais breve o possivel</p>
+                </div>
+                <div class="modal-fotter">
+                    <button class="btn btn-default" type="button" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
 </body>
 </html>

@@ -8,11 +8,14 @@ $headers = array(
     'Reply-To' => 'computadorporassinatura@awati.com.br',
     'X-Mailer' => 'PHP/'.phpversion()
 );
+mail($to, $subject, $message, $headers);
 
-if(mail($to, $subject, $message, $headers)
+
+if(true)
 {
-    echo "EAE RAPAZIADA!!";
-}
+    //print_r($to);
+};
+
 
 
 ?>
